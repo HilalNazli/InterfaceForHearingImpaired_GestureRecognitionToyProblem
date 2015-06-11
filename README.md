@@ -1,0 +1,1 @@
+Two-class gesture classification toy problem was solved using HMM classifier. Parameter decision was made in MATLAB by applying various tests to the data. Final model was then implemented in C# and applied to the user interface. Misclassification rate of the overall model was 3%.
