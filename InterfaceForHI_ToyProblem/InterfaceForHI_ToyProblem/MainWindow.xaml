@@ -1,0 +1,255 @@
+﻿<Window Name="mainWindow"
+        x:Class="InterfaceForHI_ToyProblem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Loaded="MainWindow_Loaded"
+        Closing="mainWindow_Closing"
+        Title="Ana Sayfa"
+        Width="1280"
+        Height="1150"
+        >
+    <Window.Resources>
+
+        <SolidColorBrush x:Key="BlackBrush" Color="#0f0f0f" />
+        <SolidColorBrush x:Key="BlackBrush_" Color="#272626" />
+        <SolidColorBrush x:Key="GrayBrush" Color="#cdcdcd" />
+        <SolidColorBrush x:Key="WhiteBrush" Color="#ffffff" />
+        <SolidColorBrush x:Key="OrangeBrush" Color="#d06713" />
+        <SolidColorBrush x:Key="OrangeBrush_" Color="#ff7e17" />
+        <SolidColorBrush x:Key="GreenBrush" Color="#05cb46" />
+        <SolidColorBrush x:Key="GreenBrush_" Color="#00ff48" />
+        <SolidColorBrush x:Key="WhitePen" Color="#ffffff" />
+        <SolidColorBrush x:Key="BlackPen" Color="#404040" />
+        <SolidColorBrush x:Key="BlackPen_" Color="#a3a3a3" />
+        <Style x:Key="RoundButtonTemplate" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" BorderBrush="{StaticResource OrangeBrush_}"
+                                BorderThickness="3">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </Window.Resources>
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64*"/>
+            <RowDefinition Name="Row1" Height="480*"/>
+            <RowDefinition Name="Row2" Height="96*"/>
+            <RowDefinition Height="382*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="128*"/>
+            <RowDefinition Height="64*"/>
+
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Border Background="{StaticResource BlackBrush}"/>
+
+            <Grid HorizontalAlignment="Center" Width="960">
+                <Border Background="{StaticResource BlackBrush_}"/>
+                <Image Name="IDropdown_ico" Source="assets/icon/dropdown_ico.png"
+                       HorizontalAlignment="Left"
+                       Width="64"
+                       Height="64"
+                       Margin="32 0 0 0"
+                       PreviewMouseLeftButtonDown="IDropdown_ico_PreviewMouseLeftButtonDown"/>
+                <Image Name="IUser_ico" Source="assets/icon/user_ico.png"
+                       HorizontalAlignment="Right"
+                       Width="64"
+                       Height="64"
+                       Margin="0 0 32 0"/>
+
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Border Background="{StaticResource GrayBrush}"/>
+            <Grid HorizontalAlignment="Left" Panel.ZIndex="1">
+                <ListView 
+                Name="lvMenu"
+                HorizontalAlignment="Left"
+                Width="280"
+                Background="{StaticResource WhiteBrush}"
+                Margin="100 0 0 0"
+                FontSize="24"
+                BorderBrush="{StaticResource BlackBrush}"
+                BorderThickness="3"
+                Visibility="Hidden"/>
+            </Grid>
+
+
+
+            <Grid HorizontalAlignment="Center" Width="960">
+                <Border Background="{StaticResource WhiteBrush}"/>
+                <Grid VerticalAlignment="Bottom">
+                    <Frame x:Name="questionFrame"></Frame>
+                    <MediaElement 
+                        Name="meMainVideo"
+                        Source="SignVideos/HowCanIHelpYou.mp4"
+                        Height="480"
+                        LoadedBehavior="Manual"
+                        MediaEnded="meMainVideo_MediaEnded" 
+                        Stretch="Uniform" Margin="0,0,0,-39"
+                        />
+                    <Image 
+                        Name="imgDisplayImage"  
+                        Height="480" 
+                        Margin="0,0,0,-39" 
+                        Stretch="Uniform"
+                        RenderTransformOrigin="-1.074,0.243"
+                        Visibility="Hidden"/>
+                    <TextBox
+                        Name="tbGuessedAnswer"
+                        FontSize="96"
+                        Visibility="Hidden"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        AllowDrop="True"/>
+                    <Image Name="IRe" Source="assets/button/re.png"
+                           HorizontalAlignment="Left"
+                           Margin="32 0 0 0"
+                           Width="128"
+                           Height="128"
+                           Visibility="Hidden"/>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Border Name="MiddleLineBorder" Background="{StaticResource OrangeBrush}"/>
+            <Grid HorizontalAlignment="Center" Width="960">
+                <Border Name="MiddleLineBorder_" Background="{StaticResource OrangeBrush_}"/>
+                <TextBlock 
+                    Name="TBQuestion"
+                    Margin="32 0 0 0"
+                    FontSize="48"
+                    Foreground="{StaticResource WhitePen}"
+                    VerticalAlignment="Center"/>
+
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Border Background="{StaticResource WhiteBrush}"/>
+            <Grid HorizontalAlignment="Center" Width="1088" Margin="0 32 0 0">
+                <Grid HorizontalAlignment="Left" >
+                    <Image Name="I_Prev"
+                       Source="assets/button/_prev.png"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Top"
+                       Width="64"
+                       Height="240"
+                       MouseLeftButtonDown="I_Prev_MouseLeftButtonDown"
+                       IsVisibleChanged="I_Prev_IsVisibleChanged"/>
+                </Grid>
+                <Grid HorizontalAlignment="Center" Width="960" Height="350">
+                    <ScrollViewer Visibility="Hidden" IsVisibleChanged="svAnswers_IsVisibleChanged" Name="svAnswers" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden" VerticalAlignment="Top">
+                        <StackPanel Name="spAnswers" Orientation="Horizontal" HorizontalAlignment="Center" >
+                            <Border Background="{StaticResource WhiteBrush}"/>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                    <StackPanel Visibility="Hidden" Name="spInput" Orientation="Vertical" VerticalAlignment="Top">
+                        <TextBox
+                            Name="tbName"
+                            Height="48"
+                            Width="480"
+                            Margin="0 32 0 32"
+                            BorderBrush="{StaticResource GrayBrush}"
+                            BorderThickness="3"
+                            TextAlignment="Center"
+                            FontSize="24"/>
+                        <Button 
+                            Name="bOtherName"
+                            Style="{StaticResource RoundButtonTemplate}"
+                            Height="48"
+                            Width="100"
+                            FontSize="24"
+                            Content="Tamam"
+                            Visibility="Hidden"
+                            PreviewMouseDown="bOtherName_MouseLeftButtonDown"
+                         >
+                        </Button>
+                        <Button 
+                            Name="bName"
+                            Style="{StaticResource RoundButtonTemplate}"
+                            Height="48"
+                            Width="100"
+                            FontSize="24"
+                            Background="Transparent"
+                            Content="Tamam"
+                            Visibility="Hidden"
+                            PreviewMouseDown="bName_MouseLeftButtonDown"
+                           >
+                        </Button>
+                    </StackPanel>
+                    <Button 
+                            Name="bClose"
+                            Style="{StaticResource RoundButtonTemplate}"
+                            Height="48"
+                            Width="100"
+                            FontSize="24"
+                            Background="Transparent"
+                            Content="Çıkış"
+                            Visibility="Hidden"
+                            PreviewMouseDown="bClose_PreviewMouseDown"
+                           >
+                    </Button>
+                </Grid>
+
+                <Grid HorizontalAlignment="Right">
+                    <Image Name="I_Next" 
+                       Source="assets/button/_next.png"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Width="64"
+                       Height="240"
+                       MouseLeftButtonDown="I_Next_MouseLeftButtonDown"/>
+                </Grid>
+
+
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="4">
+            <Border Background="{StaticResource OrangeBrush}"/>
+            <Grid Width="960" HorizontalAlignment="Center">
+                <Border Background="{StaticResource OrangeBrush_}"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="5">
+            <Border Background="{StaticResource WhiteBrush}"/>
+            <Grid HorizontalAlignment="Center" Width="960">
+                <DockPanel>
+                    <Image Name="IBoun_" 
+                       Source="assets/logo/boun_.png"
+                       Width="85"
+                       Height="85"
+                      />
+                    <Image Name="IPi_" Source="assets/logo/pi_.png"
+                       Width="85"
+                       Height="85"
+                       Margin="30 0 0 0"
+                      />
+                    <TextBlock Name="TBProject"
+                        HorizontalAlignment="Right"
+                        Text="Interface For Hearing Impaired"
+                        FontSize="24"
+                        Foreground="{StaticResource BlackPen_}"
+                        VerticalAlignment="Center"/>
+                </DockPanel>
+
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="6">
+            <Border Background="{StaticResource WhiteBrush}"/>
+
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9A9D2DA6-F44C-4356-8376-EB6541464B4F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InterfaceForHI_ToyProblem</RootNamespace>
+    <AssemblyName>InterfaceForHI_ToyProblem</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accord, Version=2.15.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.2.15.0\lib\net45\Accord.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Controls, Version=2.15.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Controls.2.15.0\lib\net45\Accord.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.IO, Version=2.15.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.IO.2.15.0\lib\net45\Accord.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.MachineLearning, Version=2.15.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.MachineLearning.2.15.0\lib\net45\Accord.MachineLearning.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math, Version=2.15.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.2.15.0\lib\net45\Accord.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Statistics, Version=2.15.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Statistics.2.15.0\lib\net45\Accord.Statistics.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge">
+      <HintPath>..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Math">
+      <HintPath>..\packages\AForge.Math.2.2.5\lib\AForge.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Kinect, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ZedGraph, Version=5.1.6.417, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ZedGraph.5.1.6\lib\net35-Client\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="myRecorderFunctions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="assets\.DS_Store" />
+    <None Include="assets\button\.DS_Store" />
+    <None Include="assets\button\Thumbs.db" />
+    <None Include="assets\icon\.DS_Store" />
+    <None Include="assets\icon\Thumbs.db" />
+    <None Include="assets\logo\.DS_Store" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="SignVideos\Answers\AnswersToQuestion1\Thumbs.db" />
+    <None Include="SignVideos\Answers\AnswersToQuestion2\.DS_Store" />
+    <None Include="SignVideos\Answers\AnswersToQuestion2\Thumbs.db" />
+    <None Include="SignVideos\Answers\AnswersToQuestion3\Thumbs.db" />
+    <None Include="SignVideos\Answers\AnswersToQuestion4\.DS_Store" />
+    <None Include="SignVideos\Answers\AnswersToQuestion4\Emergency\Thumbs.db" />
+    <None Include="SignVideos\Answers\AnswersToQuestion5\Thumbs.db" />
+    <None Include="SignVideos\Questions\Question1\Thumbs.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\button\next.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\button\prev.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\button\re.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\button\_next.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\button\_prev.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\icon\dropdown_ico.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\icon\user_ico.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\logo\boun.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\logo\boun_.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\logo\pi.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\logo\pi_.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="License-LGPL.txt" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion1\BenHastayim.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SignVideos\Answers\AnswersToQuestion1\BilgiAlmakIstiyorum.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SignVideos\Answers\AnswersToQuestion2\HastaZiyaretiIcinGeldim.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SignVideos\Answers\AnswersToQuestion2\SigortaBilgisiAlmakIstiyorum.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SignVideos\Answers\AnswersToQuestion2\UcretSormakIstiyorum.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion2\YerSormakIstiyorum.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion3\EvetAcil.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SignVideos\Answers\AnswersToQuestion3\HayirAcilDegil.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\Emergency\AtesiOlmak.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\Emergency\BasAgrisi.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\Emergency\Bayilmak.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\Emergency\BenimBasimDonuyor.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\Emergency\GogusAgrisi.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\Emergency\KalpCarpintisi.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\Emergency\KarnimAgriyor.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\Emergency\Kusmak.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\Emergency\NefesDarligi.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\AdetDuzensizligi.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\BelimAgriyor.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\BenAsiYaptirmakIstiyorum.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\BenCokSinirliyim.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\BogazimSisti.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\BurnumAkiyor.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\IdrarTahliliYaptirmakIstiyorum.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\IlacYazdirmakIstiyorum.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\Ishalim.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\KanTahliliYaptirmakIstiyorum.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\Oksurmek.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\SirtimAgriyor.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\TuvaleteCikamiyorum.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion4\NotEmergency\Uyuyamiyorum.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion5\EvetVar.mp4" />
+    <Content Include="SignVideos\Answers\AnswersToQuestion5\HayirYok.mp4" />
+    <Content Include="SignVideos\Directions\HastaninIsminiYaziniz.mp4" />
+    <Content Include="SignVideos\Directions\LutfenKimliginizleDanismayaKayit.mp4" />
+    <Content Include="SignVideos\Directions\LutfenSizIsminiziYaziniz.mp4" />
+    <Content Include="SignVideos\Questions\Question1\NasilYardimciOlabilirim.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SignVideos\Questions\Question2\SizNeBilgisiIstiyorsunuz.mp4" />
+    <Content Include="SignVideos\Questions\Question3\AcilMi.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SignVideos\Questions\Question4\SizinSikayetinizNedir.mp4" />
+    <Content Include="SignVideos\Questions\Question5\SizinRandevunuzVarMi.mp4" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
